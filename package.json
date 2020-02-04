@@ -22,5 +22,14 @@
         "sass-loader": "7.*",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
-    }
+    },
+    "name": "laravelapp",
+    "description": "<p align=\"center\"><img src=\"https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg\" width=\"400\"></p>",
+    "version": "1.0.0",
+    "main": "webpack.mix.js",
+    "directories": {
+        "test": "tests"
+    },
+    "author": "",
+    "license": "ISC"
 }
