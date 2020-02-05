@@ -31,5 +31,10 @@
         "test": "tests"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.12.0",
+        "admin-lte": "^3.0.2",
+        "font-awesome": "^4.7.0"
+    }
 }
