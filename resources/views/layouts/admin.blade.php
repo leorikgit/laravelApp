@@ -116,6 +116,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
+        @include('includes.messages')
         @yield('content')
 
     </div>

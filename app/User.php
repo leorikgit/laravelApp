@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'active',
     ];
 
     /**
@@ -39,5 +40,19 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo('App\Role');
+    }
+    public function avatar(){
+        return $this->hasOne('App\Avatar');
+    }
+    public function setPasswordAttribute($value){
+        if(!empty($value)){
+            $this->attributes['password'] =  Hash::make($value);
+        }
+    }
+    public function isAdmin(){
+        if($this->role->anme === 'admin' && $this->active === 1){
+            return true;
+        }
+        return false;
     }
 }
