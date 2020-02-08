@@ -41,6 +41,9 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
     public function avatar(){
         return $this->hasOne('App\Avatar');
     }
@@ -50,7 +53,8 @@ class User extends Authenticatable
         }
     }
     public function isAdmin(){
-        if($this->role->anme === 'admin' && $this->active === 1){
+
+        if($this->role->name === 'admin' && $this->active == 1){
             return true;
         }
         return false;

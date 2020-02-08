@@ -54,7 +54,7 @@ class AdminUsersController extends Controller
        $input['unique_id'] = time();
        $input['name'] = $input['unique_id'] . '_' . $user->id.'.'.$input['type'];
 
-       $file->move('upload/images', $input['name']);
+       $file->move('upload/avatars', $input['name']);
         $user->avatar()->create($input);
         return redirect()->route('admin.users.index');
     }

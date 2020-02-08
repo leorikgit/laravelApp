@@ -15,13 +15,17 @@ class CreateAvatarsTable extends Migration
     {
         Schema::create('avatars', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->string('name');
             $table->string('orginal_name');
             $table->string('type');
             $table->string('size');
             $table->string('unique_id');
             $table->timestamps();
+        });
+        Schema::table('avatars', function($table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

@@ -71,11 +71,32 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Users</p>
+                            <p>
+                                Users
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{route('admin.users.index')}}" class="nav-link">
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.users.create')}}" class="nav-link">
+                                    <p>Create</p>
+                                </a>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/read-mail.html" class="nav-link">
+
+                                    <p>Read</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">
@@ -83,11 +104,32 @@
                             <p>Category</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Post</p>
+                            <p>
+                                Posts
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{route('admin.posts.index')}}" class="nav-link">
+                                    <p>Posts</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.posts.create')}}" class="nav-link">
+                                    <p>Create</p>
+                                </a>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/read-mail.html" class="nav-link">
+
+                                    <p>Read</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>
@@ -136,12 +178,11 @@
             <b>Version</b> 3.0.0
         </div>
     </footer>
-</div>
-<!-- ./wrapper -->
+
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="/js/app.js"></script>
-
+</div>
 </body>
 </html>
