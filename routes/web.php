@@ -23,6 +23,8 @@ Route::group(['middleware'=>'admin'], function (){
     Route::name('admin.')->group(function () {
         Route::resource('admin/users', 'AdminUsersController');
         Route::resource('admin/posts', 'AdminPostsController');
+
+        Route::resource('category', 'AdminCategoryController')->except(['create']);
     });
 
     Route::get('/admin', 'AdminUsersController@index');

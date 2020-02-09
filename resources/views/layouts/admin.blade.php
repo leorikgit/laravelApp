@@ -98,11 +98,32 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Category</p>
+                            <p>
+                                Category
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{route('admin.category.index')}}" class="nav-link">
+                                    <p>Categories</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.users.create')}}" class="nav-link">
+                                    <p>Create</p>
+                                </a>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/read-mail.html" class="nav-link">
+
+                                    <p>Read</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -158,7 +179,9 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
+        @include('includes.errors')
         @include('includes.messages')
+
         @yield('content')
 
     </div>
