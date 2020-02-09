@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     @yield('title')
-
     <link rel="stylesheet" href="/css/app.css">
-
+    @yield('customStyles')
+    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -152,6 +151,33 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Media
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{route('admin.media.index')}}" class="nav-link">
+                                    <p>Photos</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.media.create')}}" class="nav-link">
+                                    <p>Create</p>
+                                </a>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/read-mail.html" class="nav-link">
+
+                                    <p>Read</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -206,6 +232,8 @@
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="/js/app.js"></script>
-</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
+
 </body>
 </html>
