@@ -25,7 +25,6 @@ Route::group(['middleware'=>'admin'], function (){
         Route::resource('admin/posts', 'AdminPostsController');
 
         Route::resource('category', 'AdminCategoryController')->except(['create']);
-        Route::resource('media', 'AdminMediaController');
     });
 
     Route::get('/admin', 'AdminUsersController@index');

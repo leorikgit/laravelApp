@@ -36,26 +36,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+
                                 @if($posts)
                                     @foreach($posts as $post)
-                                        <td>{{$post->id}}</td>
-                                        <td><img width="100" src="{{$post->image ? $post->image->path : 'No avatar'}}"></img></td>
-                                        <td>{{$post->category->name}}</td>
-                                        <td>{{$post->user->name}}</td>
-                                        <td>{{$post->title}}</td>
-                                        <td>{{$post->content}}</td>
-                                        <td>{{$post->created_at->diffforhumans()}}</td>
-                                        <td>{{$post->updated_at->diffforhumans()}}</td>
-                                        <td><a href="{{route('admin.posts.edit', $post->id)}}">Edit</a></td>
-                                        <td>
-                                            {!! Form::open(['method'=>'DELETE','route'=>['admin.posts.destroy', $post->id]]) !!}
-                                            {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
-                                        </td>
+                                        <tr>
+                                            <td>{{$post->id}}</td>
+                                            <td><img width="100" src="{{$post->image ? $post->image->path : 'No avatar'}}"></img></td>
+                                            <td>{{$post->category->name}}</td>
+                                            <td>{{$post->user->name}}</td>
+                                            <td>{{$post->title}}</td>
+                                            <td>{{$post->content}}</td>
+                                            <td>{{$post->created_at->diffforhumans()}}</td>
+                                            <td>{{$post->updated_at->diffforhumans()}}</td>
+                                            <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>
+                                            <td><a href="{{route('admin.comments.show', $post->id)}}">View comments</a></td>
+                                            <td><a href="{{route('admin.posts.edit', $post->id)}}">Edit</a></td>
+                                            <td>
+                                                {!! Form::open(['method'=>'DELETE','route'=>['admin.posts.destroy', $post->id]]) !!}
+                                                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 @endif
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
