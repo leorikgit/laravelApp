@@ -148,4 +148,9 @@ class AdminPostsController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index')->with('alert-success', 'Post has been deleted!.');
     }
+
+    public function post(Request $request, $id){
+        $post = Post::findOrFail($id);
+        return view('home.post', compact('post'));
+    }
 }
