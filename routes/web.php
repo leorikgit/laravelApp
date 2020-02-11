@@ -11,22 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+////////////////////////////////// ADMIN
 Route::group(['middleware'=>'admin'], function (){
     Route::name('admin.')->group(function () {
         Route::resource('admin/users', 'AdminUsersController');
         Route::resource('admin/posts', 'AdminPostsController');
-
         Route::resource('category', 'AdminCategoryController')->except(['create']);
+        Route::resource('admin/comments', 'AdminCommentsController');
+        Route::resource('comments/replay', 'CommentsReplayController');
+        Route::resource('media', 'AdminMediaController');
     });
 
-    Route::get('/admin', 'AdminUsersController@index');
-
+    Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
 });
+////////////////////////////////// USERS
+Route::group(['middleware'=>'auth'], function(){
+    Route::post('/post/comment', 'UserPostCommentsController@store')->name('user.post.comment.store');
+    Route::post('/comment/replay', 'UserCommentsReplaysController@store')->name('user.comment.replay.store');
+});
+
+
+////////////////////////////////// EVERYONE
+Route::get('/post/{id}', 'AdminPostsController@post')->name('home.post');
+
+
