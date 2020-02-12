@@ -35,6 +35,6 @@ Route::group(['middleware'=>'auth'], function(){
 
 
 ////////////////////////////////// EVERYONE
-Route::get('/post/{id}', 'AdminPostsController@post')->name('home.post');
+Route::get('/post/{slug}', 'AdminPostsController@post')->name('home.post');
 
 

@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('image_id')->unsigned();
             $table->string('title');
             $table->string('body');
+            $table->string('slug');
             $table->timestamps();
         });
             Schema::table('posts', function($table) {
