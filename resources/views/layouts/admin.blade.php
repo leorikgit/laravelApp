@@ -64,7 +64,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{Auth::user()->gravatar}} class="img-circle elevation-2" alt="User Image">
+                    <img src="{{Auth::user()->gravatar}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
@@ -75,7 +75,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+
                             <a href="{{route('admin.dashboard')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
@@ -256,7 +256,9 @@
     <!-- jQuery -->
     <script src="/js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
+    @yield('scripts')
 </div>
 
 </body>

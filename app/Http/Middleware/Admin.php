@@ -22,6 +22,6 @@ class admin
                 return $next($request);
             }
         }
-        return redirect('/')->with('alert-danger', 'Permisison denied.');
+        return abort(403,'Permission denied');
     }
 }

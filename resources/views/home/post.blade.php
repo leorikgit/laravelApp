@@ -19,6 +19,7 @@
             <hr>
             {{$post->body}}
             <hr>
+
             @if(Auth::check())
                 <div class="card my-4">
                     <h5 class="card-header">Leave a Comment:</h5>
@@ -42,7 +43,7 @@
                         <img height="64" class="d-flex mr-3 rounded-circle" src="{{$comment->user->avatar ? $comment->user->avatar->name : $comment->user->gravatar}}" alt="">
                         <div class="media-body">
                             <h5 class="mt-0">{{$comment->user->name}} ({{ $comment->created_at->diffForHumans() }})</h5>
-                            {{$comment->content}}
+                            {!! $comment->content !!}
                             <button class="show-replay-textarea float-right btn btn-outline-secondary">Replay</button>
                             <div class="replay-comment col-sm-10" style="display: none;margin-top: 20px">
                                 {!! Form::open( ['method'=>'POST', 'route'=>['user.comment.replay.store']]) !!}
@@ -141,13 +142,48 @@
 
 @endsection
 @section('scripts')
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
         $( document ).ready(function() {
             $('.show-replay-textarea').on('click', function($event){
                 $(this).next().slideToggle('slow');
             })
         });
+        $(document).ready(function() {
+        var editor_config = {
+            path_absolute : "/",
+            selector: "textarea",
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+            relative_urls: false,
+            file_browser_callback : function(field_name, url, type, win) {
+                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
+                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+                if (type == 'image') {
+                    cmsURL = cmsURL + "&type=Images";
+                } else {
+                    cmsURL = cmsURL + "&type=Files";
+                }
 
+                tinyMCE.activeEditor.windowManager.open({
+                    file : cmsURL,
+                    title : 'Filemanager',
+                    width : x * 0.8,
+                    height : y * 0.8,
+                    resizable : "yes",
+                    close_previous : "no"
+                });
+            }
+        };
+
+        tinymce.init(editor_config);
+        });
     </script>
 @endsection

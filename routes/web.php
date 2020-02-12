@@ -26,6 +26,7 @@ Route::group(['middleware'=>'admin'], function (){
     });
 
     Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+    Route::delete('/admin/deletePosts', 'AdminPostsController@deletePosts')->name('admin.deletePosts');
 });
 ////////////////////////////////// USERS
 Route::group(['middleware'=>'auth'], function(){
@@ -37,4 +38,6 @@ Route::group(['middleware'=>'auth'], function(){
 ////////////////////////////////// EVERYONE
 Route::get('/post/{slug}', 'AdminPostsController@post')->name('home.post');
 
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'admin']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

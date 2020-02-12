@@ -153,4 +153,14 @@ class AdminPostsController extends Controller
         $post = Post::where('slug',$slug)->firstOrFail();
         return view('home.post', compact('post'));
     }
+    public function deletePosts(Request $request){
+//        return $request->all();
+        $posts = Post::findOrFail($request->array);
+        foreach($posts as $post){
+            unlink(public_path() . $post->image->path);
+            $post->delete();
+        }
+        return redirect()->back();
+
+    }
 }
