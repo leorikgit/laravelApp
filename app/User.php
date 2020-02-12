@@ -59,4 +59,10 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function getGravatarAttribute(){
+        return "https://www.gravatar.com/avatar/". md5(trim($this->attributes['email']))."?d=identicon";
+
+
+    }
 }

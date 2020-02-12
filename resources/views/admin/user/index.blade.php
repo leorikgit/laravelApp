@@ -41,7 +41,7 @@
                                     @foreach($users as $user)
                                         <tr>
                                             <td>{{$user->id}}</td>
-                                            <td><img width="100" src="{{$user->avatar ? $user->avatar->name : 'No avatar'}}"></img></td>
+                                            <td><img width="100" src="{{$user->avatar ? $user->avatar->name : $user->gravatar}}"></img></td>
                                             <td>{{$user->role->name}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
